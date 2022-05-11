@@ -25,11 +25,4 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         Debug.Log("Quit Game");
     }
-    public void ChangeBetweenMainMenuToOpstionsMenu()
-    {
-        OptionsMenu.gameObject.SetActive(true);
-        BackButton.gameObject.SetActive(false);
-    }
-    public GameObject OptionsMenu;
-    public GameObject BackButton;
 }
