@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
             WinLoseImage.color = Color.red;
             StartCoroutine(LoadScene(3));
         }
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("menu");
+        }
     }
     void FixedUpdate()
     {
