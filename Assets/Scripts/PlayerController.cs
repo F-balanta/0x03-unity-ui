@@ -20,8 +20,12 @@ public class PlayerController : MonoBehaviour
     {
         if (health == 0)
         {
-            Debug.Log("Game Over!");
-            SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
+            //Debug.Log("Game Over!");
+            WinLoseImage.gameObject.SetActive(true);
+            WinLoseText.text = "Game Over!";
+            WinLoseText.color = Color.white;
+            WinLoseImage.color = Color.red;
+            StartCoroutine(LoadScene(3));
         }
     }
     void FixedUpdate()
@@ -51,6 +55,11 @@ public class PlayerController : MonoBehaviour
     {
         healthText.text = "Health: " + health.ToString();
     }
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(scene.name, LoadSceneMode.Single);
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Pickup")
@@ -68,7 +77,12 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Goal")
         {
-            Debug.Log("You win!");
+            //Debug.Log("You win!");
+            WinLoseImage.gameObject.SetActive(true);
+            WinLoseText.text = "You Win";
+            WinLoseText.color = Color.black;
+            WinLoseImage.color = Color.green;
+            StartCoroutine(LoadScene(3));
         }
     }
     public Rigidbody rb;
@@ -78,4 +92,6 @@ public class PlayerController : MonoBehaviour
     private Scene scene;
     public Text scoreText;
     public Text healthText;
+    public Text WinLoseText;
+    public Image WinLoseImage;
 }
