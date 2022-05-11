@@ -47,6 +47,10 @@ public class PlayerController : MonoBehaviour
     {
         scoreText.text = "Score: " + score.ToString();
     }
+    void SetHealthText()
+    {
+        healthText.text = "Health: " + health.ToString();
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Pickup")
@@ -59,7 +63,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Trap")
         {
             health -= 1;
-            Debug.Log("Health: " + health);
+            //Debug.Log("Health: " + health);
+            SetHealthText();
         }
         if (other.gameObject.tag == "Goal")
         {
@@ -72,4 +77,5 @@ public class PlayerController : MonoBehaviour
     public int health;
     private Scene scene;
     public Text scoreText;
+    public Text healthText;
 }
